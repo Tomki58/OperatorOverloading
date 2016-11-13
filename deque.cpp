@@ -13,7 +13,8 @@ Deque::Deque()///////////?????????????????????????????? +
 
 Deque::Deque(int a, char *s, char *str)
 {
-    Log *l1 = new Log(a, s, str);
+    Log *l1 = new Log;
+    (*l1)(a, s, str);
     *top->ll = *l1;
     top->next = NULL;
     last = top;
@@ -284,4 +285,9 @@ int Deque::getCount()
         for (cur = top, count = 0; cur != last->next; cur = cur->next, count++);
         return count;
     }
+}
+
+void Deque::operator <<(Log* l)
+{
+    this->addFirst(l);
 }

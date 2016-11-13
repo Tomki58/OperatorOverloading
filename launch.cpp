@@ -9,10 +9,10 @@ Launch::Launch() : Log()
     strcpy(this->Name_of_File, "NULL");
 }
 
-Launch::Launch(int ID, char* Descr, char* UserName, char* NameOfFile) : Log(ID, Descr, UserName)
-{
-    strcpy(this->Name_of_File, NameOfFile);
-}
+//Launch::Launch(int ID, char* Descr, char* UserName, char* NameOfFile) : Log(ID, Descr, UserName)
+//{
+//    strcpy(this->Name_of_File, NameOfFile);
+//}
 
 Launch::~Launch()
 {
@@ -55,4 +55,12 @@ void Launch::loadFromFile(FILE* F)
     this->set_Description(description);
     this->set_User_Name(userName);
     this->set_Name_Of_File(fileName);
+}
+
+void Launch::operator ()(int id, char *descr, char *name, char *filename)
+{
+    this->Event_ID = id;
+    strcpy(this->Description, descr);
+    strcpy(this->User_Name, name);
+    strcpy(this->Name_of_File, filename);
 }

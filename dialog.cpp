@@ -51,7 +51,8 @@ void Dialog::on_pushButton_clicked()
                 char *Description = new char[40]; char *User_Name = new char[40];
                 strcpy(Description, qPrintable(ui->Description->text()));
                 strcpy(User_Name, qPrintable(ui->User_Name->text()));
-                Log *L = new Log(ui->ID->text().toInt(), Description, User_Name);
+                Log *L = new Log;
+                (*L)(ui->ID->text().toInt(), Description, User_Name);
                 D->addFirst(L);
                 ui->ID->clear(); ui->Description->clear(); ui->User_Name->clear();
             }
@@ -62,7 +63,8 @@ void Dialog::on_pushButton_clicked()
                     strcpy(Description, qPrintable(ui->Description->text()));
                     strcpy(User_Name, qPrintable(ui->User_Name->text()));
                     strcpy(FileName, qPrintable(ui->FileName->text()));
-                    Launch *l = new Launch(ui->ID->text().toInt(), Description, User_Name, FileName);
+                    Launch *l = new Launch;
+                    (*l)(ui->ID->text().toInt(), Description, User_Name, FileName);
                     D->addFirst(l);
                     ui->ID->clear(); ui->Description->clear(); ui->User_Name->clear(); ui->FileName->clear();
                 }
@@ -74,7 +76,8 @@ void Dialog::on_pushButton_clicked()
                 char *Description = new char[40]; char *User_Name = new char[40];
                 strcpy(Description, qPrintable(ui->Description->text()));
                 strcpy(User_Name, qPrintable(ui->User_Name->text()));
-                Log *L = new Log(ui->ID->text().toInt(), Description, User_Name);
+                Log *L = new Log;
+                (*L)(ui->ID->text().toInt(), Description, User_Name);
                 D->addLast(L);
                 ui->ID->clear(); ui->Description->clear(); ui->User_Name->clear();
             }
@@ -85,7 +88,8 @@ void Dialog::on_pushButton_clicked()
                     strcpy(Description, qPrintable(ui->Description->text()));
                     strcpy(User_Name, qPrintable(ui->User_Name->text()));
                     strcpy(FileName, qPrintable(ui->FileName->text()));
-                    Launch *l = new Launch(ui->ID->text().toInt(), Description, User_Name, FileName);
+                    Launch *l = new Launch;
+                    (*l)(ui->ID->text().toInt(), Description, User_Name, FileName);
                     D->addLast(l);
                     ui->ID->clear(); ui->Description->clear(); ui->User_Name->clear(); ui->FileName->clear();
                 }
@@ -303,7 +307,11 @@ void Dialog::on_pushButton_6_clicked()
             *D->getElement(ui->lineEdit->text().toInt()) = *l;
         }
     }
+    Log *L1 = new Log;
+    (*L1)(2, "log_Descr", "Log_name");
+    *D << L1;
 }
+
 
 // В итоге получили контейнер, который может хранить элементы обоих классов.
 // Все добавления элементов адаптивны в зависимости от класса.

@@ -32,6 +32,11 @@ public:
     Log* getElement(int);
     int getCount();
     ~Deque();
+    Log* operator[](int j)
+    {
+        return this->First();
+    }
+    void operator<<(Log*);
 };
 
 #endif // DEQUE_H

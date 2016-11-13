@@ -20,12 +20,12 @@ Log::~Log()
 {
 }
 
-Log::Log(int a, char *s, char *str)
-{
-    Event_ID = a;
-    strcpy(Description, s);
-    strcpy(User_Name, str);
-}
+//Log::Log(int a, char *s, char *str)
+//{
+//    Event_ID = a;
+//    strcpy(Description, s);
+//    strcpy(User_Name, str);
+//}
 
 Log::Log(const Log &obj)
 {
@@ -85,4 +85,11 @@ void Log::loadFromFile(FILE* F)
     *(description + i ) = '\0';
     this->set_Description(description);
     this->set_User_Name(userName);
+}
+
+void Log::operator ()(int id, char *desc, char* name)
+{
+    this->Event_ID = id;
+    strcpy(this->Description, desc);
+    strcpy(this->User_Name, name);
 }

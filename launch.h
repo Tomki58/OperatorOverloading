@@ -13,6 +13,7 @@ public:
     char* get_Name_Of_File();
     void set_Name_Of_File(char*);
     void loadFromFile(FILE*);
+    void operator()(int, char*, char*, char*);
     ~Launch();
 };
 
